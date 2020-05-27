@@ -47,8 +47,7 @@ function PostsList(props) {
                     <p>{post.post}</p>
                     <button onClick={deletePost} value={post._id}>DELETE</button>
                     <button onClick={() => setId(post._id)}>EDIT</button>
-                    {id === post._id && <SinglePost closeModal={closeModal} title={post.title} post={post.post} fetchDataAfterEdit={fetchDataAfterEdit} id={post._id} />}
-
+                    {id === post._id && <SinglePost category={post.category} closeModal={closeModal} title={post.title} post={post.post} fetchDataAfterEdit={fetchDataAfterEdit} id={post._id} />}
                 </div>
             ))}
         </div>

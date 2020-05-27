@@ -13,8 +13,6 @@ router.route('/').get((req, res) => {
 
 
 
-
-
 router.route('/add').post((req, res) => {
     const title = req.body.title
     const post = req.body.post
@@ -26,10 +24,14 @@ router.route('/add').post((req, res) => {
     })
 
     newPost.save()
-    Posts.find()
-        .then(post => res.json(post))
-        .catch(err => res.status(400).json('Error:' + err))
+        .then(() => {
+            return Posts.find()
+                .then(post => res.json(post))
+                .catch(err => res.status(400).json('Error:' + err))
+        })
+        .catch(err => res.status(400).json('Error' + err))
 })
+
 
 
 

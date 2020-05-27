@@ -7,7 +7,7 @@ function AdminSide(props) {
     const [user, setUser] = useContext(UserContext);
     return (
         <div className="App">
-            {user ?
+            {1 ?
                 <AdminPanel />
                 :
                 <Login loginHandler={props.loginHandler} setUsername={props.setUsername} setPassword={props.setPassword} />
