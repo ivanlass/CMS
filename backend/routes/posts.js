@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const Posts = require('../models/post.model')
-
+const fileUpload = require('express-fileupload')
 
 
 
@@ -14,13 +14,23 @@ router.route('/').get((req, res) => {
 
 
 router.route('/add').post((req, res) => {
+    const coverFile = req.files.cover
     const title = req.body.title
     const post = req.body.post
     const category = req.body.category
+
+    console.log(req.body)
+    coverFile.mv('photos/' + coverFile.name, function (error) {
+        if (error) {
+            console.log("photo cant upload")
+        } else { console.log('Success') }
+    })
+    const cover = coverFile.name
     const newPost = new Posts({
         title,
         post,
-        category
+        category,
+        cover
     })
 
     newPost.save()
