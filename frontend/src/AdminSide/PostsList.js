@@ -15,7 +15,7 @@ function PostsList(props) {
             .then(response => setPosts(response.data))
             .catch(error => console.log(error))
     }, [])
-
+    console.log(posts)
     const deletePost = (e) => {
         e.preventDefault()
         axios({
@@ -45,6 +45,7 @@ function PostsList(props) {
                 <div key={post._id}>
                     <h2>{post.title}</h2>
                     <p>{post.post}</p>
+                    <img style={{ width: 100 }} src={`http://localhost:5000/${post.cover}`}></img>
                     <button onClick={deletePost} value={post._id}>DELETE</button>
                     <button onClick={() => setId(post._id)}>EDIT</button>
                     {id === post._id && <SinglePost category={post.category} closeModal={closeModal} title={post.title} post={post.post} fetchDataAfterEdit={fetchDataAfterEdit} id={post._id} />}

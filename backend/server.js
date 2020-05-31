@@ -2,7 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const fileUpload = require('express-fileupload')
-var publicDir = require('path').join(__dirname, '/photos');
+var publicDir = require('path').join(__dirname, '/photos/');
 
 require('dotenv').config()
 
