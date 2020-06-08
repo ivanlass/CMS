@@ -3,11 +3,14 @@ import axios from 'axios';
 import Navigation from './Navigation'
 import PostList from './PostList'
 import { PostsContext } from '../context/postsContext'
+import './client.css'
+
 
 function Portal() {
     const [pickedCategory, setPickedCategory] = useState("all")
     const [posts, setPosts] = useContext(PostsContext)
-    const [filteredPosts, setFilteredPosts] = useState()
+    const [filteredPosts, setFilteredPosts] = useState([])
+
 
     useEffect(() => {
         axios({
@@ -35,12 +38,10 @@ function Portal() {
         setFilteredPosts(filteredPosts)
     }, [pickedCategory])
 
-
-    console.log(filteredPosts)
     return (
-        <div className="App">
+        <div>
             <Navigation fetchPickedCategory={fetchPickedCategory} />
-            <PostList filteredPosts={filteredPosts} />
+            {filteredPosts != undefined && filteredPosts.length > 0 ? < PostList filteredPosts={filteredPosts} /> : null}
         </div>
     );
 }

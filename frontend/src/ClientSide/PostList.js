@@ -1,22 +1,30 @@
 import React from 'react';
+import './client.css'
+import { Link } from "react-router-dom";
+
+
 
 
 function PostList({ filteredPosts }) {
 
 
 
-
     return (
-        <div className="App">
+        <div className="grid-container">
             {filteredPosts && filteredPosts.map(post => (
-                <>
-                    <div style={{ background: `url(http://localhost:5000/${post.cover})` }}>
-                        <h1>{post.title}</h1>
-                        <p>{post.category}</p>
+                <Link to={`/${post._id}`} >
+                    <div className="post">
+                        <div className="cover" style={{ background: `url(http://localhost:5000/${post.cover})` }}>
+                            <div className="title-wrapper">
+                                <h1>{post.title}</h1>
+                                <p>{post.category}</p>
+                            </div>
+                        </div>
                     </div>
-                </>
-            ))}
-        </div>
+                </Link>
+            ))
+            }
+        </div >
     );
 }
 

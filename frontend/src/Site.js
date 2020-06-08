@@ -6,9 +6,12 @@ import AdminSide from './AdminSide/AdminSide'
 import Portal from './ClientSide/Portal'
 import SinglePost from './AdminSide/SinglePost'
 import { UserContext } from './context/userContext'
+import { PostsContext } from './context/postsContext'
+import Post from './ClientSide/Post'
 
 function Site() {
     const [user, setUser] = useContext(UserContext);
+    const [singlePost] = useContext(PostsContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
@@ -38,6 +41,12 @@ function Site() {
                             <Portal />
                         </Route>
                         <Route exact path="/admin/post/edit/:id" component={SinglePost} />
+                        {/* <Route exact path="/post/:id" >
+                            <Post {...singlePost} />
+                        </Route> */}
+                        <Route path="/:id" render={props => (
+                            <Post {...props} />
+                        )} />
                     </Switch>
                 </div>
             </Router>
