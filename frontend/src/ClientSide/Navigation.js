@@ -19,9 +19,9 @@ function Navigation(props) {
     return (
         <div >
             <ul className="nav">
-                <li className="nav-item"><a href="#" onClick={props.fetchPickedCategory} data-category="all">Home</a></li>
+                <li className="nav-item" onClick={props.fetchPickedCategory} data-category="all">Home</li>
                 {categories && categories.map(category => (
-                    <li className="nav-item" key={category._id}><a href="#" onClick={props.fetchPickedCategory} data-category={category.category}>{category.category}</a></li>
+                    <li className="nav-item" key={category._id} onClick={props.fetchPickedCategory} data-category={category.category}>{category.category}</li>
                 ))}
             </ul>
         </div>

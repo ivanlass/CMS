@@ -23,11 +23,17 @@ function Post(props) {
     return (
         <>
             {singlePost &&
-                <div >
-                    <Link to={"/"}>asd</Link>
-                    <p>rtyrty</p>
-                    {/* <div style={{ background: `url(${singlePost.cover})` }}></div>
-            <h1>{singlePost.title}</h1> */}
+                <div className="singlepost">
+                    <Link className="singlepost-home" to={"/"}>GO TO HOME</Link>
+                    <div className="singlepost-hero-image" style={{
+                        background: `url(http://localhost:5000/${singlePost.cover})`,
+                        backgroundSize: "cover",
+                        backgroundRepeat: "no-repeat",
+                        backgroundOrigin: "content-box",
+                        backgroundPosition: "center center"
+                    }}></div>
+                    <h1>{singlePost.title}</h1>
+                    <p className="singlepost-post">{singlePost.post}</p>
                 </div>}
         </>
     );
